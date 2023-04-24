@@ -1,0 +1,13 @@
+#:import hex kivy.utils.get_color_from_hex
+
+<Card>
+    md_bg_color: app.theme_cls.bg_light
+    size_hint_y: None
+    height: "150dp"
+    radius: 10
+    MDRelativeLayout:
+        MDLabel:
+            font_style: "Bold"
+            font_size: "20dp"
+            halign: "center"
+            text: root.text

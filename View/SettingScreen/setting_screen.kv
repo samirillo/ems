@@ -1,0 +1,31 @@
+<SettingScreenView>
+    ScreenLayout:
+        title: "Configuración"
+        caption: "Configuración General"
+        nav_button: app.navigation_drawer.set_state
+
+        MDBoxLayout:
+            orientation: "vertical"
+            MDLabel:
+                font_style: "H5"
+                text: "Explorar"
+                size_hint_y: 0.1
+                line_height: 1
+                padding_x: "10dp"
+
+            ScrollView:
+                GridContent:
+                    Card:
+                        text: "Configurar campaña"
+                        FitImage:
+                            source: "assets\images\config.png"
+                            size_hint_y: .35
+                            pos_hint: {"top": 1}
+                            radius: 36, 36, 0, 0                          
+                    Card:
+                        text: "Cambiar contraseña"
+                        FitImage:
+                            source: "assets\images\pass.png"
+                            size_hint_y: .35
+                            pos_hint: {"top": 1}
+                            radius: 36, 36, 0, 0                           

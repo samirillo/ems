@@ -1,0 +1,37 @@
+<SearchScreenView>
+    ScreenLayout:
+        title: "Buscar"
+        caption: "Buscar lider"
+        nav_button: app.navigation_drawer.set_state
+
+        MDBoxLayout:
+            orientation: "vertical"
+            MDLabel:
+                font_style: "H5"
+                text: "Explorar"
+                size_hint_y: 0.1
+                line_height: 1
+                padding_x: "10dp"
+
+            ScrollView:
+                GridContent:
+                    Card:
+                        orientation:"vertical"
+                        height: "300dp"
+                        MDTextField:
+                            id: name
+                            hint_text: "Identificacion"
+                            required: True
+                            helper_text_mode: "on_error"
+                            helper_text: "Número de documento del lider"
+                            pos_hint: {"center_x": .5, "center_y": .1}
+
+                        MDBoxLayout:
+                            id:content
+                            MDLabel:
+                                id:leader
+                                text:""
+
+            MDTopAppBar:
+                left_action_items: [["account-edit", lambda x: x]]
+                right_action_items: [["magnify", lambda x: x]]   

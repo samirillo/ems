@@ -1,0 +1,26 @@
+<GridContent>:
+    id: cards_grid
+    adaptive_height: True
+    cols: 2
+    spacing: "15dp"
+    padding: "15dp"
+
+<ScreenLayout>
+    orientation: "vertical"
+    md_bg_color: app.theme_cls.bg_dark
+    MDBoxLayout:
+        padding: 0, 0, 0, "20dp"
+        size_hint: 1, .4
+        orientation: "vertical"
+        MDIconButton:
+            icon: "menu"
+            on_release: root.nav_button()
+        MDLabel:
+            text: root.title
+            font_style: "H4"
+            padding_x: "20dp"
+        MDLabel:
+            text: root.caption
+            padding_x: "20dp"
+
+    

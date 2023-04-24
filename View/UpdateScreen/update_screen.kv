@@ -1,0 +1,47 @@
+<UpdateScreenView>
+    ScreenLayout:
+        title: "Actualizar Lider"
+        caption: "Actualizar o eliminar  lider"
+        nav_button: app.navigation_drawer.set_state
+
+        MDBoxLayout:
+            orientation: "vertical"
+            MDLabel:
+                font_style: "H5"
+                text: "Datos del Lider"
+                size_hint_y: 0.1
+                line_height: 1
+                padding_x: "10dp"
+
+            ScrollView:
+                GridContent:
+                    Card:
+                        orientation:"vertical"
+                        height: "300dp"
+                        padding:7
+                        MDWidget:
+                        MDTextField:
+                            id: name
+                            hint_text: "Nombres"
+
+                        MDTextField:
+                            id: nit
+                            hint_text: "Identificación"
+ 
+                        MDTextField:
+                            id: email
+                            hint_text: "Correo electronico"
+
+                        MDTextField:
+                            id: phone
+                            hint_text: "Telefono"
+
+                        MDTextField:
+                            id: address
+                            hint_text: "Dirección"
+                                                
+
+            MDTopAppBar:
+                left_action_items: [["chevron-left", lambda x: x]]
+                right_action_items: [["content-save-check-outline", lambda x: x],["delete-forever", lambda x: x]]              
+

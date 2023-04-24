@@ -1,0 +1,63 @@
+<DrawerClickableItem@MDNavigationDrawerItem>
+    focus_color: app.theme_cls.primary_color
+    text_color: app.theme_cls.opposite_bg_dark
+    icon_color: app.theme_cls.opposite_bg_dark
+    selected_color: app.theme_cls.primary_dark
+    radius: 10
+    text_color:
+        ( \
+        app.theme_cls.text_color \
+        if not root.icon_color else \
+        root.icon_color \
+        ) \
+        if not root.selected else \
+        root.selected_color
+
+<MDNavigationDrawer>:
+    id: nav_drawer
+    main: main
+    new: new
+    radius: (0, 16, 16, 0) if self.anchor == "left" else (16, 0, 0, 16)
+
+    MDNavigationDrawerMenu:
+
+        MDNavigationDrawerHeader:
+            title: "EMS"
+            title_font_style: "H3"
+            padding: "12dp", 0, 0, "20dp"
+
+        MDNavigationDrawerLabel:
+            text: "Menu"
+
+        DrawerClickableItem:
+            id: main
+            icon: "chart-pie"
+            selected: True
+            text: "Estadisticas"
+            on_release: 
+                root.set_state()
+                app.manager_screens.current = "main screen"
+
+        DrawerClickableItem:
+            id: new
+            icon: "account-plus"
+            text: "Nuevo"
+            on_release:
+                root.set_state()
+                app.manager_screens.current = "new screen"
+        DrawerClickableItem:
+            id: search
+            icon: "magnify"
+            selected: True
+            text: "Buscar"
+            on_release: 
+                root.set_state()
+                app.manager_screens.current = "search screen"
+
+        DrawerClickableItem:
+            id: settings
+            icon: "cogs"
+            text: "Configuración"
+            on_release:
+                root.set_state()
+                app.manager_screens.current = "setting screen"                

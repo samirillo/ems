@@ -1,0 +1,57 @@
+<NewScreenView>
+    ScreenLayout:
+        title: "Equipo de Campaña"
+        caption: "Crear nuevo lider"
+        nav_button: app.navigation_drawer.set_state
+
+        MDBoxLayout:
+            orientation: "vertical"
+            MDLabel:
+                font_style: "H5"
+                text: "Cuenta de nuevo Lider"
+                size_hint_y: 0.1
+                line_height: 1
+                padding_x: "10dp"
+
+            ScrollView:
+                GridContent:
+                    Card:
+                        orientation:"vertical"
+                        height: "300dp"
+                        padding:7
+                        MDWidget:
+                        MDTextField:
+                            id: name
+                            hint_text: "Nombres"
+                            required: True
+                            helper_text_mode: "on_error"
+                            helper_text: "Nombres completos"
+                        MDTextField:
+                            id: nit
+                            hint_text: "Identificación"
+                            required: True
+                            helper_text_mode: "on_error"
+                            helper_text: "Número de documento"   
+                        MDTextField:
+                            id: email
+                            hint_text: "Correo electronico"
+                            required: True
+                            helper_text_mode: "on_error"
+                            helper_text: "Correo Electronico valido"
+                        MDTextField:
+                            id: phone
+                            hint_text: "Telefono"
+                            required: True
+                            helper_text_mode: "on_error"
+                            helper_text: "Telefono celular"
+                        MDTextField:
+                            id: address
+                            hint_text: "Dirección"
+                            required: True
+                            helper_text_mode: "on_error"
+                            helper_text: "Dirección de residencia"                                                    
+
+            MDTopAppBar:
+                left_action_items: [["account-plus", lambda x: x]]
+                right_action_items: [["content-save-check-outline", lambda x: x]]              
+
