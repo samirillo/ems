@@ -17,6 +17,10 @@
                 GridContent:
                     Card:
                         text: "Configurar campaña"
+                        on_release: 
+                            app.manager_screens.current = "plagas screen"
+                            app.navigation_drawer.plagas.selected = True
+                            app.navigation_drawer.main.selected = False                        
                         FitImage:
                             source: "assets\images\config.png"
                             size_hint_y: .35
@@ -24,6 +28,10 @@
                             radius: 36, 36, 0, 0                          
                     Card:
                         text: "Cambiar contraseña"
+                        on_release: 
+                            app.manager_screens.current = "plagas screen"
+                            app.navigation_drawer.plagas.selected = True
+                            app.navigation_drawer.main.selected = False                        
                         FitImage:
                             source: "assets\images\pass.png"
                             size_hint_y: .35

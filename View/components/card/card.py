@@ -10,7 +10,7 @@ from kivy.properties import (
     StringProperty
 )
 
-class Card(MDCard, RoundedRectangularElevationBehavior, ThemableBehavior, HoverBehavior):
+class Card(MDCard):
     text = StringProperty()
     
     def on_enter(self, *args):

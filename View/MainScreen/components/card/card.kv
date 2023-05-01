@@ -1,0 +1,28 @@
+<StatCard>
+    size_hint: .9, .95
+    pos_hint: {"center_x": .5, "center_y": .5}
+    radius: 20
+    elevation: 24
+
+    MDRelativeLayout:
+
+        FitImage:
+            id: image_bg
+            source: root.path_to_bg_image
+            size_hint: None, .35
+            pos_hint: {"top": 1}
+            x: -root.view.parallax_step
+            y: root.height - self.height
+            width:
+                root.width + \
+                root.view.parallax_step * len(root.view.ids.carousel.slides)    
+
+        MDLabel:
+            id: stat_name
+            text: root.stat_name
+            bold: True
+            adaptive_size: True
+            font_style: "H4"
+            color: 0, 0, 0, 1
+            x: dp(20)
+            y: root.height - self.height - dp(20)
