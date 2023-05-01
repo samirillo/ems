@@ -1,0 +1,90 @@
+<SingupScreenView>
+    FitImage:
+        source:"assets/images/signup.png"
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            title: "Registrar un nuevo usuario"
+            right_action_items: [["chevron-right-circle", lambda x: x]]
+
+        MDFloatLayout:
+
+            MDBoxLayout:
+                orientation: "vertical"
+                adaptive_height: True
+                size_hint_x: None
+                width: root.width - dp(90)
+                radius: 12
+                padding: "12dp"
+                md_bg_color: 0.8, 0.773, 0.773, .5
+                pos_hint: {"center_x": .5, "center_y": .5}
+
+                MDLabel:
+                    id: signup_label
+                    text: "\nIngrese sus datos para crear una cuenta de administrador:"
+                    font_style: "H6"
+                    adaptive_height: True
+                    halign: "center"
+
+                MDBoxLayout:
+                    orientation: "vertical"
+                    adaptive_height: True
+                    padding: "50dp"
+                    spacing: "20dp"
+                    MDTextField:
+                        id:fullname
+                        hint_text: "Nombres"
+                        icon_left: "account"
+                        on_text: root.controller.set_user_data("full_name", self.text)
+                    MDTextField:
+                        id:email
+                        hint_text: "Correo Electrónico"
+                        icon_left: "email"
+                        on_text: root.controller.set_user_data("email", self.text)
+                    MDTextField:
+                        id:pssword
+                        hint_text: "Contraseña"
+                        icon_left: "key-variant"
+                        password:True
+                        on_text: root.controller.set_user_data("password", self.text)
+                    MDTextField:
+                        id:cpssword
+                        hint_text: "Confirmar contraseña"
+                        icon_left: "key-variant"
+                        password:True
+                        on_text: root.controller.set_user_data("confirm", self.text)
+
+                    MDCard:
+                        orientation: "vertical"
+                        padding: "10dp"
+                        md_bg_color:1,0,1,0.0
+                        size_hint: None, None
+                        size: "150dp", "150dp"
+                        pos_hint: {"center_x":.1, "y": .1}
+                        MDLabel:
+                            text:"avatar"
+                            theme_text_color: "Secondary"
+                            adaptive_height: True
+                        MDSeparator:
+                            height: "1dp"
+                        Image:
+                            id:avatar
+                            source:
+                            allow_stretch:
+                            pos_hint: {"center_x":.5, "center_y": .5}
+                        MDSeparator:
+                            height: "1dp"
+                        MDRaisedButton:
+                            text:"CARGAR IMAGEN"
+                            bold:True
+                            md_bg_color: 0.0863, 0.4784, 0.102, 1
+                            pos_hint: {"center_x":.5, "center_y": .5}
+                            on_press:root.file_manager_open()
+    MDFillRoundFlatButton:
+        text: "CREAR CUENTA"
+        on_release:
+            root.controller.set_user_data("avatar", root.ids.avatar.source)
+            root.controller.on_tap_button_signup()
+        pos_hint: {"center_x": .5, "center_y": .1}

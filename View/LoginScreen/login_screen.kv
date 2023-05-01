@@ -1,0 +1,65 @@
+<LoginScreenView>
+    MDFloatLayout:
+        orientation: "horizontal"
+        md_bg_color:74/255,20/255,140/255,1
+        MDBoxLayout:
+            orientation: "vertical"
+            adaptive_height: True
+            pos_hint:{"center_x": .25, "center_y": .5}
+            size_hint_x:0.5
+            MDBoxLayout:
+                orientation:"vertical"
+                size_hint:None,None
+                height:300
+                width:300
+                radius:200
+                md_bg_color:189/255,189/255,189/255,1
+                pos_hint:{"center_x": .5, "center_y": .5}
+                Image:
+                    source:"assets/images/login.png"
+
+                    size_hint:.6,.6
+                    pos_hint:{"center_x": .5}
+
+        MDBoxLayout:
+            orientation: "vertical"
+            adaptive_height: True
+            pos_hint:{"center_x": .75, "center_y": .5}
+            size_hint_x:0.5
+            MDLabel:
+                id: login_label
+                text: "ACCESO AL SISTEMA"
+                font_style: "H4"
+                adaptive_height: True
+                halign: "center"
+
+            MDBoxLayout:
+                orientation: "vertical"
+                adaptive_height: True
+                padding: "50dp"
+                spacing: "20dp"
+
+                MDTextField:
+                    id:email
+                    hint_text: "Correo Electrónico"
+                    icon_left: "email"
+                    mode:"round"
+                MDTextField:
+                    id:pssword
+                    hint_text: "Contraseña"
+                    icon_left: "key-variant"
+                    mode:"round"
+                    password:True
+
+                MDFillRoundFlatButton:
+                    text: "                             INICIAR SESIÓN                            "
+                    md_bg_color:"green"
+                    on_release:
+                        root.controller.set_user_data(root.ids.email.text,root.ids.pssword.text)
+                        root.controller.on_tap_button_login()
+                    pos_hint: {"center_x": .5, "center_y": .1}
+                MDTextButton:
+                    id: forgot
+                    text: "olvido su contraseña"
+
+                    pos_hint: {"center_x": .5, "center_y": .2}
