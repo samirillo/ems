@@ -1,0 +1,22 @@
+{
+    "Lideres":
+        [
+            "Olive oil, bacon, pepperoni sausages, red onion, cherry tomatoes, mozzarella cheese, chicken fillet, barbecue sauce, minced beef, pickled hot peppers",
+            "$3.50"
+        ],
+    "Electores":
+        [
+            "Eggplant, green onion, tomato, parmesan cheese, mozzarella cheese, chicken fillet, zucchini",
+            "$4.75"
+        ],
+    "Barrios":
+        [
+            "Eggplant, green onion, tomato, parmesan cheese, mozzarella cheese, chicken fillet, zucchini",
+            "$4.75"
+        ],        
+    "Puestos":
+        [
+            "Olive oil, salami, hunting sausages, pepperoni sausages, homemade sausages, red onion, parsley, mozzarella cheese, sweet and sour sauce",
+            "$2.99"
+        ]
+  }

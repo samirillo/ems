@@ -1,6 +1,7 @@
 from typing import NoReturn
 import importlib
 
+
 import View.MainScreen.main_screen
 
 # We have to manually reload the view module in order to apply the
@@ -20,9 +21,13 @@ class MainScreenController:
     def __init__(self, model):
         self.model = model  # Model.main_screen.MainScreenModel
         self.view = View.MainScreen.main_screen.MainScreenView(controller=self, model=self.model)
-        
-    def set_user_data(self, key, value) -> NoReturn:
-        print(key, value)
+
+    def on_slide_progress(self, instance_carousel, offset_value):
+        """
+        Called when the user swipes on the screen (the moment the slides move).
+        """
+
+        self.view.do_animation_card_content(instance_carousel, offset_value)
 
     def get_view(self) -> View.MainScreen.main_screen.MainScreenView:
         return self.view

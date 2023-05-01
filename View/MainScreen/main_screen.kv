@@ -11,40 +11,20 @@
                 size_hint_y: 0.1
                 line_height: 1
                 padding_x: "10dp"
-            ScrollView:
-                GridContent:
-                    Card:
-                        text: "Lideres"
-                        on_release: 
-                            app.manager_screens.current = "plagas screen"
-                            app.navigation_drawer.plagas.selected = True
-                            app.navigation_drawer.main.selected = False
-                        FitImage:
-                            source: "assets\images\lideres.png"
-                            size_hint_y: .35
-                            pos_hint: {"top": 1}
-                            radius: 36, 36, 0, 0                            
-                    Card:
-                        text: "Electores"
-                        FitImage:
-                            source: "assets\images\electores.png"
-                            size_hint_y: .35
-                            pos_hint: {"top": 1}
-                            radius: 36, 36, 0, 0                          
-                    Card:
-                        text: "Barrios"
-                        FitImage:
-                            source:"assets\images\land.png"
-                            size_hint_y: .35
-                            pos_hint: {"top": 1}
-                            radius: 36, 36, 0, 0                          
-                    Card:
-                        text: "Puestos de votacion"
-                        FitImage:
-                            source: "assets\images\puestos.png"
-                            size_hint_y: .35
-                            pos_hint: {"top": 1}
-                            radius: 36, 36, 0, 0                          
+            MDCarousel:
+                id: carousel
+                on_slide_progress: root.controller.on_slide_progress(*args)
+                MDRaisedButton:
+                    text: "SLIDE 1"
+                    pos_hint: {"center_x": .5, "center_y": .5}
+
+                MDRaisedButton:
+                    text: "SLIDE 2"
+                    pos_hint: {"center_x": .5, "center_y": .5}
+
+                MDRaisedButton:
+                    text: "SLIDE 3"
+                    pos_hint: {"center_x": .5, "center_y": .5}                   
                        
 
 
