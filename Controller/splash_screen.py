@@ -23,8 +23,7 @@ class SplashScreenController:
     def on_tap_button_login(self, scr_name):
         self.view.change_screen(scr_name)
 
-    def on_tap_button_signup(self, scr_name):
-        self.view.change_screen(scr_name)
+
 
     def get_view(self) -> View.SplashScreen.splash_screen:
         return self.view

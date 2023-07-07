@@ -58,5 +58,5 @@ class MainScreenView(BaseScreenView):
             direction = "right"
         return direction
 
-    def model_is_changed(self):
+    def model_is_changed(self, option) -> None:
         pass

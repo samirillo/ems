@@ -1,7 +1,7 @@
 import importlib
 from typing import NoReturn
 import View.SingupScreen.singup_screen
-
+from Utils.functions import encriptar_password
 # We have to manually reload the view module in order to apply the
 # changes made to the code on a subsequent hot reload.
 # If you no longer need a hot reload, you can delete this instruction.
@@ -25,8 +25,20 @@ class SingupScreenController:
     def set_user_data(self, key, value) -> NoReturn:
         self.model.set_user_data(key, value)
 
+    def set_password_data(self, key, value) -> NoReturn:
+        self.model.set_password_data(key, value)
+
+    def encrypt_password(self, password):
+        hash=encriptar_password(password)
+        return hash
+    def confirm_password_data(self):
+        self.model.compare_textfields()
+
     def on_tap_button_signup(self):
         self.model.create_user()
+
+    def on_tap_button_go_login(self, scr_name):
+        self.view.change_screen(scr_name)
 
     def get_view(self) -> View.SingupScreen.singup_screen:
         return self.view

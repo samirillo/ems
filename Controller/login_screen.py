@@ -22,5 +22,8 @@ class LoginScreenController:
         self.model = model  # Model.login_screen.LoginScreenModel
         self.view = View.LoginScreen.login_screen.LoginScreenView(controller=self, model=self.model)
 
+    def on_tap_button_go_signup(self, scr_name):
+        self.view.change_screen(scr_name)
+
     def get_view(self) -> View.LoginScreen.login_screen:
         return self.view

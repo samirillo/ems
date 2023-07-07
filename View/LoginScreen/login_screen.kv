@@ -2,6 +2,7 @@
     MDFloatLayout:
         orientation: "horizontal"
         md_bg_color:74/255,20/255,140/255,1
+
         MDBoxLayout:
             orientation: "vertical"
             adaptive_height: True
@@ -52,7 +53,7 @@
                     password:True
 
                 MDFillRoundFlatButton:
-                    text: "                             INICIAR SESIÓN                            "
+                    text: "                      INICIAR SESIÓN                     "
                     md_bg_color:"green"
                     on_release:
                         root.controller.set_user_data(root.ids.email.text,root.ids.pssword.text)
@@ -63,3 +64,10 @@
                     text: "olvido su contraseña"
 
                     pos_hint: {"center_x": .5, "center_y": .2}
+
+        MDTextButton:
+            id: go_signup
+            text: "primera vez?. crea una cuenta de administrador aqui"
+            pos_hint: {"center_x": .5, "center_y": .15}
+            on_press:
+                root.controller.on_tap_button_go_signup("singup screen")
