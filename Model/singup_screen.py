@@ -21,26 +21,11 @@ class SingupScreenModel(BaseScreenModel):
         """Sets a dictionary of data that the user enters."""
         self.user_data[key] = value
 
-    def set_password_data(self, key, value):
-        """Sets a dictionary of data that the user enters."""
-        self.password_data[key] = value
-
-    def compare_textfields(self):
-        pwd = self.password_data["password"]
-        cfm = self.password_data["confirm"]
-        if pwd == cfm:
-            self.notify_observers("equal")
-            return True
-
     def create_user(self):
-        if self.compare_textfields():
-
-            if self.database.insert(self.user_data):
-                self.notify_observers("save")
-            else:
-                self.notify_observers("error")
+        if self.database.insert(self.user_data):
+            self.notify_observers("save")
         else:
-            self.notify_observers("!Error:las contraseñas no coinciden")
+            self.notify_observers("error al crear usuario")
 
     def notify_observers(self, option):
         """

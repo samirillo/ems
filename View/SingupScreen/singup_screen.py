@@ -33,8 +33,9 @@ class SingupScreenView(BaseScreenView):
 
     def model_is_changed(self, option) -> None:
        if option == "equal":
-           print("contraseñas iguales")
+           pass
        elif option =="save":
-           print("usuario creado con exito")
+           self.ids.message.color=(0,0.95,0,1)
+           self.ids.message.text="usuario creado con exito"
        else:
             self.ids.message.text=option

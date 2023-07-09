@@ -1,6 +1,7 @@
 import hashlib
 import re
 
+message=""
 def encriptar_password(password):
     # Convertir la contraseña a bytes
     password_bytes = password.encode('utf-8')
@@ -12,11 +13,6 @@ def encriptar_password(password):
 
     return hash_password
 
-
-
-
-
-import hashlib
 
 def verificar_password(password, hash_password):
     # Convertir la contraseña a bytes
@@ -34,6 +30,26 @@ def verificar_password(password, hash_password):
         return False
 
 
+def validate_form(name, phone, email, password, confirm_password):
+    global message
+    email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+    if not name or not phone or not email or not password or not confirm_password:
+        message = "todos los campos son requeridos"
+        return False
+    # Validación de formato de correo electrónico
+
+    elif not re.match(email_regex, email):
+        message="email invalido"
+        return False
+    elif password != confirm_password:
+        message="las contraseñas no coinciden"
+        return False
+
+    else:
+
+        return True
+
+
 def validar_email(email):
     # Expresión regular para verificar el formato del correo electrónico
     patron = r'^[\w\.-]+@[\w\.-]+\.\w+$'
@@ -43,3 +59,8 @@ def validar_email(email):
         return True
     else:
         return False
+
+
+def compare_textfields(password, confirm_password):
+    if password == confirm_password:
+        return True

@@ -27,6 +27,6 @@ class DataBase:
             self.db.users.insert_one(data)
             return True
         except PyMongoError as er:
-            print(er)
+
             return False
 

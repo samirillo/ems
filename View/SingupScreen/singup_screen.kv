@@ -70,7 +70,6 @@
                     password:True
                     required: True
                     on_text: root.controller.set_user_data("password", root.controller.encrypt_password(self.text))
-                    on_text: root.controller.set_password_data("password", self.text)
                 MDTextField:
                     id:confirm
                     hint_text: "Confirmar Contraseña"
@@ -78,8 +77,6 @@
                     mode:"round"
                     password:True
                     required: True
-                    on_text: root.controller.set_password_data("confirm", self.text)
-                    on_text_validate:root.controller.confirm_password_data()
                 MDFillRoundFlatButton:
                     text: "                        REGISTRAR                         "
                     md_bg_color:"green"
@@ -88,17 +85,19 @@
                         root.controller.set_user_data("last_login",root.date)
                         root.controller.set_user_data("idRol",0)
                         root.controller.set_user_data("idElections",0)
-                        root.controller.on_tap_button_signup()
+                        root.controller.on_tap_button_signup(fullname.text, phone.text, email.text, pssword.text, confirm.text)
                     pos_hint: {"center_x": .5, "center_y": .1}
 
         MDLabel:
             id:message
-            pos_hint: {"center_x": .5, "center_y": .8}
+            pos_hint: {"center_x": .82, "center_y": .08}
             color:[.95,0,0,1]
             font_style:"H6"
+
         MDTextButton:
             id: go_login
             text: "Ya tienes cuenta?. inicia sesión aqui"
             pos_hint: {"center_x": .5, "center_y": .12}
             on_press:
                 root.controller.on_tap_button_go_login("login screen")
+
