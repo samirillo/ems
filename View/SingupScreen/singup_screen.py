@@ -1,6 +1,7 @@
 import datetime
 from kivy.properties import ObjectProperty
 from View.base_screen import BaseScreenView
+from kivy.clock import Clock
 
 
 class SingupScreenView(BaseScreenView):
@@ -25,17 +26,22 @@ class SingupScreenView(BaseScreenView):
     and defaults to `None`.
     """
     date = datetime.datetime.now()
+
     def __init__(self, **kw):
         super().__init__(**kw)
 
     def change_screen(self, scr_name) -> None:
         self.manager_screens.current = scr_name
 
+    def login(self, *args):
+        self.manager_screens.current = "login screen"
+
     def model_is_changed(self, option) -> None:
-       if option == "equal":
-           pass
-       elif option =="save":
-           self.ids.message.color=(0,0.95,0,1)
-           self.ids.message.text="usuario creado con exito"
-       else:
-            self.ids.message.text=option
+        if option == "equal":
+            pass
+        elif option == "save":
+            self.ids.message.color = (0, 0.95, 0, 1)
+            self.ids.message.text = "usuario creado con exito"
+            Clock.schedule_once(self.login, 10)
+        else:
+            self.ids.message.text = option

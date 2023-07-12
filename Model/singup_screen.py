@@ -1,6 +1,7 @@
 import multitasking
 
 from Model.base_model import BaseScreenModel
+from Utils.functions import validate_form, encriptar_password
 
 multitasking.set_max_threads(10)
 
@@ -15,17 +16,24 @@ class SingupScreenModel(BaseScreenModel):
         # Just an example of the data. Use your own values.
         self.database = database
         self.user_data = {}
-        self.password_data = {}
 
     def set_user_data(self, key, value):
         """Sets a dictionary of data that the user enters."""
         self.user_data[key] = value
 
     def create_user(self):
-        if self.database.insert(self.user_data):
-            self.notify_observers("save")
+        response = validate_form(self.user_data)
+        if response[0]:
+            self.user_data.pop("confirm")
+            pwd_hash = encriptar_password(self.user_data["password"])
+            self.user_data["password"] = pwd_hash
+            insert = self.database.insert(self.user_data)
+            if insert:
+                self.notify_observers("save")
+            else:
+                self.notify_observers("error al crear usuario ")
         else:
-            self.notify_observers("error al crear usuario")
+            self.notify_observers(response[1])
 
     def notify_observers(self, option):
         """

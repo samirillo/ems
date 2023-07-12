@@ -1,13 +1,6 @@
-import importlib
+from typing import NoReturn
 
 import View.LoginScreen.login_screen
-
-# We have to manually reload the view module in order to apply the
-# changes made to the code on a subsequent hot reload.
-# If you no longer need a hot reload, you can delete this instruction.
-importlib.reload(View.LoginScreen.login_screen)
-
-
 
 
 class LoginScreenController:
@@ -21,6 +14,19 @@ class LoginScreenController:
     def __init__(self, model):
         self.model = model  # Model.login_screen.LoginScreenModel
         self.view = View.LoginScreen.login_screen.LoginScreenView(controller=self, model=self.model)
+
+    def set_user_data(self, key, value) -> NoReturn:
+        """Called every time the user enters text into the text fields."""
+
+        self.model.set_user_data(key, value)
+
+    def on_tap_button_login(self) -> NoReturn:
+        """Called when the `LOGIN` button is pressed."""
+        self.view.show_dialog_wait()
+        self.model.chek_data()
+
+    def reset_data_validation_status(self, *args) -> NoReturn:
+        self.model.reset_data_validation_status()
 
     def on_tap_button_go_signup(self, scr_name):
         self.view.change_screen(scr_name)

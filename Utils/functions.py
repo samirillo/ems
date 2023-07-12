@@ -1,7 +1,9 @@
 import hashlib
 import re
 
-message=""
+message = ""
+
+
 def encriptar_password(password):
     # Convertir la contraseña a bytes
     password_bytes = password.encode('utf-8')
@@ -30,37 +32,32 @@ def verificar_password(password, hash_password):
         return False
 
 
-def validate_form(name, phone, email, password, confirm_password):
-    global message
+def validate_form(data: dict):
     email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
-    if not name or not phone or not email or not password or not confirm_password:
-        message = "todos los campos son requeridos"
-        return False
-    # Validación de formato de correo electrónico
 
-    elif not re.match(email_regex, email):
-        message="email invalido"
-        return False
-    elif password != confirm_password:
-        message="las contraseñas no coinciden"
-        return False
+    if not all(key in data for key in ["fullname", "phone", "email", "password", "confirm"]):
+        message = "Todos los campos son requeridos"
+        return False, message
 
-    else:
+    if not re.match(email_regex, data["email"]):
+        message = "Email inválido"
+        return False, message
 
-        return True
+    if data["password"] != data["confirm"]:
+        message = "Las contraseñas no coinciden"
+        return False, message
 
-
-def validar_email(email):
-    # Expresión regular para verificar el formato del correo electrónico
-    patron = r'^[\w\.-]+@[\w\.-]+\.\w+$'
-
-    # Validar el correo electrónico utilizando la expresión regular
-    if re.match(patron, email):
-        return True
-    else:
-        return False
+    return True, None
 
 
-def compare_textfields(password, confirm_password):
-    if password == confirm_password:
-        return True
+def validate_login_form(data: dict):
+    email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+    if not all(key in data for key in ["email", "password"]):
+        message = "Todos los campos son requeridos"
+        return False, message
+
+    if not re.match(email_regex, data["email"]):
+        message = "Email inválido"
+        return False, message
+
+    return True, None

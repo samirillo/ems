@@ -45,19 +45,18 @@
                     hint_text: "Correo Electrónico"
                     icon_left: "email"
                     mode:"round"
+                    on_text:root.controller.set_user_data("email",self.text)
                 MDTextField:
                     id:pssword
                     hint_text: "Contraseña"
                     icon_left: "key-variant"
                     mode:"round"
                     password:True
-
+                    on_text:root.controller.set_user_data("password",self.text)
                 MDFillRoundFlatButton:
                     text: "                      INICIAR SESIÓN                     "
                     md_bg_color:"green"
-                    on_release:
-                        root.controller.set_user_data(root.ids.email.text,root.ids.pssword.text)
-                        root.controller.on_tap_button_login()
+                    on_release:root.controller.on_tap_button_login()
                     pos_hint: {"center_x": .5, "center_y": .1}
                 MDTextButton:
                     id: forgot
